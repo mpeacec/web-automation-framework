@@ -27,25 +27,21 @@ public abstract class BaseTest {
     }
 
     WebDriverManager.chromedriver().setup();
+
     ChromeOptions options = new ChromeOptions();
+    boolean isCI = "true".equalsIgnoreCase(System.getenv("CI"));
 
-// Headless'ı config'ten oku (sende var)
-// boolean headless = config.isHeadless(); // veya ConfigReader.getBoolean("headless")
-
-// CI'da güvenli varsayılan: GitHub Actions ortamını yakala
-boolean isCI = "true".equalsIgnoreCase(System.getenv("CI"));
-
-if (headless || isCI) {
-    options.addArguments("--headless=new");
-    options.addArguments("--no-sandbox");
-    options.addArguments("--disable-dev-shm-usage");
-    options.addArguments("--window-size=1920,1080");
-    options.addArguments("--disable-gpu");
-}
-driver = new ChromeDriver(options);
+    if (headless || isCI) {
+      options.addArguments("--headless=new");
+      options.addArguments("--no-sandbox");
+      options.addArguments("--disable-dev-shm-usage");
+      options.addArguments("--window-size=1920,1080");
+      options.addArguments("--disable-gpu");
+    }
 
     driver = new ChromeDriver(options);
     DRIVER_THREAD_LOCAL.set(driver);
+
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
     driver.manage().window().maximize();
   }
