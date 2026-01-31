@@ -60,5 +60,41 @@ GitHub Actions workflow runs on push/PR to `main` and `develop`:
 ## Roadmap
 See `ROADMAP.md` for planned phases across UI, API, and mobile automation.
 
+## Roadmap Progress
+
+This repository is intentionally developed as a **living SDET automation framework**.  
+Below is the current progress and planned evolution.
+
+### Phase 1 – Core Web Automation (Completed ✅)
+- [x] Java 17 + Maven project setup
+- [x] Selenium 4 with WebDriverManager
+- [x] TestNG test runner
+- [x] Page Object Model (POM) architecture
+- [x] Explicit wait utilities
+- [x] Positive & negative UI test scenarios
+- [x] Screenshot capture on test failure
+- [x] Config-driven browser & headless execution
+- [x] CI pipeline with GitHub Actions
+- [x] Code formatting enforced with Spotless
+- [x] Branch-based workflow (main / develop)
+
+### Phase 2 – API Automation (Planned ⏳)
+- [ ] REST Assured integration
+- [ ] Base API client abstraction
+- [ ] Authentication handling (token-based)
+- [ ] Positive & negative API test scenarios
+- [ ] Schema / contract validation
+- [ ] API tests integrated into CI pipeline
+
+### Phase 3 – Advanced SDET Capabilities (Planned ⏳)
+- [ ] UI + API end-to-end test flows
+- [ ] Parallel test execution
+- [ ] Retry mechanism for controlled flaky tests
+- [ ] Test tagging (smoke / regression)
+- [ ] Dockerized execution (optional)
+- [ ] Selenium Grid or remote execution
+
+> The roadmap is continuously updated as the framework evolves.
+
 ## Contributing
 See `CONTRIBUTING.md` for branching strategy, commit style, and PR guidelines.
