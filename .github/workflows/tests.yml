@@ -23,9 +23,13 @@ jobs:
 
       - name: Run tests
         run: mvn -B spotless:check
+        env:
+          CI: "true"
 
       - name: Run tests
         run: mvn -B clean test
+        env:
+          CI: "true"
 
       - name: Upload Surefire reports
         if: always()
