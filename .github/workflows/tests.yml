@@ -2,13 +2,18 @@ name: Maven Tests
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: ["main", "develop"]
   pull_request:
-    branches: [ "main", "develop" ]
+    branches: ["main", "develop"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -18,15 +23,15 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
           cache: maven
 
-      - name: Run tests
+      - name: Spotless check
         run: mvn -B spotless:check
         env:
           CI: "true"
 
-      - name: Run tests
+      - name: Run test suite
         run: mvn -B clean test
         env:
           CI: "true"
@@ -37,6 +42,7 @@ jobs:
         with:
           name: surefire-reports
           path: target/surefire-reports
+          if-no-files-found: ignore
 
       - name: Upload screenshots
         if: always()
