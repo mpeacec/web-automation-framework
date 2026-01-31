@@ -1,3 +1,4 @@
+![CI](https://github.com/mpeacec/web-automation-framework/actions/workflows/tests.yml/badge.svg?branch=main)
 # SDET Automation Framework
 
 ## Vision
